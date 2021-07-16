@@ -130,6 +130,3 @@ dmypy.json
 
 # To protect the token
 *.env
-
-# Databases
-*.db
