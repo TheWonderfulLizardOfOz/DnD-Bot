@@ -4,13 +4,13 @@ from discord.ext import tasks, commands
 import sqlite3
 import random
 
-class Backstory(commands.Cog):
+class Background(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     @commands.command()
-    async def createBackstory(self, ctx):
-        self.setBackstoryID()
+    async def createBackground(self, ctx):
+        self.setBackgroundID()
         self.setPersonality()
         self.setIdeal()
         self.setBond()
@@ -18,48 +18,46 @@ class Backstory(commands.Cog):
         message = self.message()
         await ctx.send(message)
 
-    def setBackstoryID(self):
+    def setBackgroundID(self):
         self.openDB()
-        self.cursor.execute("""SELECT backstory.backstoryID, backstory.backstoryName FROM backstory""")
+        self.cursor.execute("""SELECT background.backgroundID, background.backgroundName FROM background""")
         results = self.cursor.fetchall()
         print(results)
-        self.backstoryID = random.choice(results)[0]
-        print(self.backstoryID)
-        self.backstory = results[self.backstoryID - 1][1]
-        print(self.backstory)
+        self.backgroundID = random.choice(results)[0]
+        self.background = results[self.backgroundID - 1][1]
         self.closeDB()
 
     def setPersonality(self):
         self.openDB()
         self.cursor.execute("""SELECT personalityTrait.personalityTrait 
-        FROM PersonalityTrait WHERE personalityTrait.backstoryID = ?""", [self.backstoryID])
+        FROM PersonalityTrait WHERE personalityTrait.backgroundID = ?""", [self.backgroundID])
         results = self.cursor.fetchall()
         self.personality = random.choice(results)[0]
         self.closeDB()
 
     def setIdeal(self):
         self.openDB()
-        self.cursor.execute("""SELECT ideal.ideal FROM ideal WHERE ideal.backstoryID = ?""", [self.backstoryID])
+        self.cursor.execute("""SELECT ideal.ideal FROM ideal WHERE ideal.backgroundID = ?""", [self.backgroundID])
         results = self.cursor.fetchall()
         self.ideal = random.choice(results)[0]
         self.closeDB()
 
     def setBond(self):
         self.openDB()
-        self.cursor.execute("""SELECT bond.bond FROM bond WHERE bond.backstoryID = ?""", [self.backstoryID])
+        self.cursor.execute("""SELECT bond.bond FROM bond WHERE bond.backgroundID = ?""", [self.backgroundID])
         results = self.cursor.fetchall()
         self.bond = random.choice(results)[0]
         self.closeDB()
 
     def setFlaw(self):
         self.openDB()
-        self.cursor.execute("""SELECT flaw.flaw FROM flaw WHERE flaw.backstoryID = ?""", [self.backstoryID])
+        self.cursor.execute("""SELECT flaw.flaw FROM flaw WHERE flaw.backgroundID = ?""", [self.backgroundID])
         results = self.cursor.fetchall()
         self.flaw = random.choice(results)[0]
         self.closeDB()
 
     def openDB(self):
-        self.db = sqlite3.connect(os.path.dirname(__file__) + '/../backstories.db')
+        self.db = sqlite3.connect(os.path.dirname(__file__) + '/../backgrounds.db')
         self.cursor = self.db.cursor()
 
     def closeDB(self):
@@ -67,12 +65,12 @@ class Backstory(commands.Cog):
         self.db.close()
 
     def message(self):
-        message = """**`Backstory:`** {}
+        message = """**`Background:`** {}
 **`Personality Trait:`** {}
 **`Ideal:`** {}
 **`Bond:`** {}
-**`Flaw:`** {}""".format(self.backstory, self.personality, self.ideal, self.bond, self.flaw)
+**`Flaw:`** {}""".format(self.background, self.personality, self.ideal, self.bond, self.flaw)
         return message
 
 def setup(bot):
-    bot.add_cog(Backstory(bot))
+    bot.add_cog(Background(bot))
