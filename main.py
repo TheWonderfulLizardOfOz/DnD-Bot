@@ -6,7 +6,7 @@ load_dotenv(".env")
 TOKEN = os.getenv("DISCORD_TOKEN")
 bot = commands.Bot(command_prefix='!')
 
-extentions = ["cogs.background", "cogs.owner"]
+extentions = ["cogs.background", "cogs.owner", "cogs.randomBackground"]
 
 @bot.event
 async def on_ready():

@@ -8,21 +8,10 @@ class Background(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
-    async def createBackground(self, ctx):
-        self.setBackgroundID()
-        self.setPersonality()
-        self.setIdeal()
-        self.setBond()
-        self.setFlaw()
-        message = self.message()
-        await ctx.send(message)
-
     def setBackgroundID(self):
         self.openDB()
         self.cursor.execute("""SELECT background.backgroundID, background.backgroundName FROM background""")
         results = self.cursor.fetchall()
-        print(results)
         self.backgroundID = random.choice(results)[0]
         self.background = results[self.backgroundID - 1][1]
         self.closeDB()
@@ -72,5 +61,19 @@ class Background(commands.Cog):
 **`Flaw:`** {}""".format(self.background, self.personality, self.ideal, self.bond, self.flaw)
         return message
 
+class CreateBackground(Background):
+    def __init__(self, bot):
+        self.bot = bot
+
+    @commands.command()
+    async def createBackground(self, ctx):
+        self.setBackgroundID()
+        self.setPersonality()
+        self.setIdeal()
+        self.setBond()
+        self.setFlaw()
+        message = self.message()
+        await ctx.send(message)
+
 def setup(bot):
-    bot.add_cog(Background(bot))
+    bot.add_cog(CreateBackground(bot))
