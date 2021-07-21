@@ -6,7 +6,7 @@ class Owner(commands.Cog):
 
     @commands.command(name="load")
     @commands.is_owner()
-    async def load_cog(self, ctx, arg):
+    async def loadCog(self, ctx, arg):
         try:
             self.bot.load_extension(arg)
         except Exception as e:
@@ -16,7 +16,7 @@ class Owner(commands.Cog):
 
     @commands.command(name = "unload")
     @commands.is_owner()
-    async def unload_cog(self, ctx, arg):
+    async def unloadCog(self, ctx, arg):
         try:
             self.bot.unload_extension(arg)
         except Exception as e:
@@ -26,7 +26,7 @@ class Owner(commands.Cog):
 
     @commands.command(name = "reload")
     @commands.is_owner()
-    async def reload_cog(self, ctx, arg):
+    async def reloadCog(self, ctx, arg):
         try:
             self.bot.unload_extension(arg)
             self.bot.load_extension(arg)
