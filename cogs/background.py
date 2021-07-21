@@ -1,6 +1,5 @@
 import os.path
-import discord
-from discord.ext import tasks, commands
+from discord.ext import commands
 import sqlite3
 import random
 

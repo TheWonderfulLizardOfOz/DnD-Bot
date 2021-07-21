@@ -1,9 +1,5 @@
-import os.path
-import discord
-from discord.ext import tasks, commands
+from discord.ext import commands
 from cogs.background import Background
-import sqlite3
-import random
 
 
 class RandomBackground(Background):
