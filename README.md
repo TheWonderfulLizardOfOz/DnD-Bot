@@ -30,6 +30,10 @@ Requires Discord.py library, and SQL software to edit database directly.
 
 **!rollStatsd20** - rolls stats using a d20
 
+**!rollStats4d6Drop** - rolls stats using the 4d6 drop lowest rule
+
+**!rollStats4d6** - rolls stats using a 4d6
+
 **!load [extension_name]** - Loads an extension, can only be executed by server owner
 
 **!unload [extension_name]** - Unloads an extension, can only be executed by server owner (main use is for removing an extention the server may not want)
@@ -40,6 +44,6 @@ Requires Discord.py library, and SQL software to edit database directly.
 
 - Members being able to add their own custom backstories and features as well as adding to pre-existing ones
 - Add more to background features such as languages, stats and proficiencies
-- Different types of stat rolling (e.g 4d6 drop lowest, 4d6, 3d6 etc...)
+- More types of stat rolling
 - Create entire random characters with names, stats and backgrounds
 - Other stuff I haven't thought of yet
