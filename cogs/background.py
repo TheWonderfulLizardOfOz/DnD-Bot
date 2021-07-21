@@ -18,29 +18,28 @@ class Background(commands.Cog):
 
     def setPersonality(self):
         self.openDB()
-        self.cursor.execute("""SELECT personalityTrait.personalityTrait 
-        FROM PersonalityTrait WHERE personalityTrait.backgroundID = ?""", [self.backgroundID])
+        self.cursor.execute(self.personalityStatement)
         results = self.cursor.fetchall()
         self.personality = random.choice(results)[0]
         self.closeDB()
 
     def setIdeal(self):
         self.openDB()
-        self.cursor.execute("""SELECT ideal.ideal FROM ideal WHERE ideal.backgroundID = ?""", [self.backgroundID])
+        self.cursor.execute(self.idealStatement)
         results = self.cursor.fetchall()
         self.ideal = random.choice(results)[0]
         self.closeDB()
 
     def setBond(self):
         self.openDB()
-        self.cursor.execute("""SELECT bond.bond FROM bond WHERE bond.backgroundID = ?""", [self.backgroundID])
+        self.cursor.execute(self.bondStatement)
         results = self.cursor.fetchall()
         self.bond = random.choice(results)[0]
         self.closeDB()
 
     def setFlaw(self):
         self.openDB()
-        self.cursor.execute("""SELECT flaw.flaw FROM flaw WHERE flaw.backgroundID = ?""", [self.backgroundID])
+        self.cursor.execute(self.flawStatement)
         results = self.cursor.fetchall()
         self.flaw = random.choice(results)[0]
         self.closeDB()
@@ -68,12 +67,20 @@ class CreateBackground(Background):
     @commands.command()
     async def createBackground(self, ctx):
         self.setBackgroundID()
+        self.setStatements()
         self.setPersonality()
         self.setIdeal()
         self.setBond()
         self.setFlaw()
         message = self.message()
         await ctx.send(message)
+
+    def setStatements(self):
+        self.personalityStatement = """SELECT personalityTrait.personalityTrait 
+                FROM PersonalityTrait WHERE personalityTrait.backgroundID = """ + str(self.backgroundID)
+        self.idealStatement = """SELECT ideal.ideal FROM ideal WHERE ideal.backgroundID = """ + str(self.backgroundID)
+        self.bondStatement = """SELECT bond.bond FROM bond WHERE bond.backgroundID = """ + str(self.backgroundID)
+        self.flawStatement = """SELECT flaw.flaw FROM flaw WHERE flaw.backgroundID = """ + str(self.backgroundID)
 
 def setup(bot):
     bot.add_cog(CreateBackground(bot))
