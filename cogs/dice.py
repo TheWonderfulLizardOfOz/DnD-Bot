@@ -5,16 +5,6 @@ class Roll(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
-    async def roll(self, ctx, arg = None):
-        if arg == None:
-            await ctx.send("Rolling d20...\n" + str(random.randint(1, 20)))
-        nums = self.splitArg(arg)
-        if nums == None:
-            await ctx.send("Please enter the command as '[number of times rolled]d[dice to roll]'")
-        message = self.messageCreator(nums, arg)
-        await ctx.send(message)
-
     def splitArg(self, arg):
         arg = arg.split("d")
         if len(arg) == 2:
@@ -45,5 +35,19 @@ class Roll(commands.Cog):
             message += "\n = " + str(total)
         return message
 
+class RollDice(Roll):
+    def __init__(self, bot):
+        self.bot = bot
+
+    @commands.command()
+    async def roll(self, ctx, arg=None):
+        if arg == None:
+            await ctx.send("Rolling d20...\n" + str(random.randint(1, 20)))
+        nums = self.splitArg(arg)
+        if nums == None:
+            await ctx.send("Please enter the command as '[number of times rolled]d[dice to roll]'")
+        message = self.messageCreator(nums, arg)
+        await ctx.send(message)
+
 def setup(bot):
-    bot.add_cog(Roll(bot))
+    bot.add_cog(RollDice(bot))
