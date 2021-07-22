@@ -43,6 +43,45 @@ class Background(commands.Cog):
         self.flaw = random.choice(results)[0]
         self.closeDB()
 
+    def getLanguagesNo(self):
+        self.openDB()
+        self.cursor.execute("""SELECT background.noLanguages FROM background
+         WHERE background.backgroundID = ?""", [self.backgroundID])
+        self.noLanguages = self.cursor.fetchall()[0][0]
+        print(self.noLanguages)
+        self.closeDB()
+        return self.noLanguages
+
+    def setLanguages(self):
+        languageList = self.getLanguageList()
+        languages = []
+        for i in range(int(self.noLanguages)):
+            language = random.choice(languageList)
+            if language not in languages:
+                languages.append(language)
+            else:
+                i = i - 1
+        return languages
+
+    def getLanguageList(self):
+        self.openDB()
+        self.cursor.execute("""SELECT language FROM language""")
+        languageList = self.cursor.fetchall()
+        print(languageList)
+        return languageList
+
+    def setLanguageMessage(self, languages):
+        self.languageMessage = ""
+        print(languages)
+        if self.noLanguages != 0:
+            for language in languages:
+                self.languageMessage += language[0] + ", "
+            print(self.languageMessage)
+            self.languageMessage = self.languageMessage[:-2]
+        else:
+            self.languageMessage = None
+        print(self.languageMessage)
+
     def openDB(self):
         self.db = sqlite3.connect(os.path.dirname(__file__) + '/../backgrounds.db')
         self.cursor = self.db.cursor()
@@ -56,7 +95,8 @@ class Background(commands.Cog):
 **`Personality Trait:`** {}
 **`Ideal:`** {}
 **`Bond:`** {}
-**`Flaw:`** {}""".format(self.background, self.personality, self.ideal, self.bond, self.flaw)
+**`Flaw:`** {}
+**`Languages:`** {}""".format(self.background, self.personality, self.ideal, self.bond, self.flaw, self.languageMessage)
         return message
 
 class CreateBackground(Background):
@@ -71,6 +111,9 @@ class CreateBackground(Background):
         self.setIdeal()
         self.setBond()
         self.setFlaw()
+        self.getLanguagesNo()
+        languages = self.setLanguages()
+        self.setLanguageMessage(languages)
         message = self.message()
         await ctx.send(message)
 

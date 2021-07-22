@@ -24,6 +24,13 @@ class RandomBackground(Background):
         self.bondStatement = """SELECT bond.bond FROM bond"""
         self.flawStatement = """SELECT flaw.flaw FROM flaw"""
 
+    def message(self):
+        message = """**`Background:`** {}
+**`Personality Trait:`** {}
+**`Ideal:`** {}
+**`Bond:`** {}
+**`Flaw:`** {}""".format(self.background, self.personality, self.ideal, self.bond, self.flaw)
+        return message
 
 def setup(bot):
     bot.add_cog(RandomBackground(bot))
