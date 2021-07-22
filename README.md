@@ -43,7 +43,8 @@ Requires Discord.py library, and SQL software to edit database directly.
 # TODO list
 
 - Members being able to add their own custom backstories and features as well as adding to pre-existing ones
-- Add more to background features such as languages, stats and proficiencies
+- Add more to background features such as stats and proficiencies
 - More types of stat rolling
 - Create entire random characters with names, stats and backgrounds
+- Add languages to !randomBackground
 - Other stuff I haven't thought of yet
