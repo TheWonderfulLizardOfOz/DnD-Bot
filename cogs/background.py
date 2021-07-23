@@ -48,7 +48,6 @@ class Background(commands.Cog):
         self.cursor.execute("""SELECT background.noLanguages FROM background
          WHERE background.backgroundID = ?""", [self.backgroundID])
         self.noLanguages = self.cursor.fetchall()[0][0]
-        print(self.noLanguages)
         self.closeDB()
         return self.noLanguages
 
@@ -67,20 +66,16 @@ class Background(commands.Cog):
         self.openDB()
         self.cursor.execute("""SELECT language FROM language""")
         languageList = self.cursor.fetchall()
-        print(languageList)
         return languageList
 
     def setLanguageMessage(self, languages):
         self.languageMessage = ""
-        print(languages)
         if self.noLanguages != 0:
             for language in languages:
                 self.languageMessage += language[0] + ", "
-            print(self.languageMessage)
             self.languageMessage = self.languageMessage[:-2]
         else:
             self.languageMessage = None
-        print(self.languageMessage)
 
     def openDB(self):
         self.db = sqlite3.connect(os.path.dirname(__file__) + '/../backgrounds.db')
@@ -102,6 +97,10 @@ class Background(commands.Cog):
 class CreateBackground(Background):
     def __init__(self, bot):
         self.bot = bot
+        self.personalityStatement = ""
+        self.idealStatement = ""
+        self.bondStatement = ""
+        self.flawStatement = ""
 
     @commands.command()
     async def createBackground(self, ctx):
