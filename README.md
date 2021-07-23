@@ -2,7 +2,7 @@
 
 A dnd bot for character creation, currently can only generate a random background.
 
-Requires Discord.py library, and SQL software to edit database directly.
+Requires Discord.py library, and SQL software if you want to edit database directly/sqlite3 library to edit using a program.
 
 # Extensions:
 
@@ -20,7 +20,7 @@ Requires Discord.py library, and SQL software to edit database directly.
 
 **!createBackstory** - Creates a randomly generated background using DnD 5e basic rules backgrounds (so far - will add more when main features are done, only basic rules for now to test features)
 
-**!randomBackstory** - Creates a randomly generated background from different backgrouns using DnD 5e basic rule, a bit more fun but backgrounds might be inconsistent
+**!randomBackstory** - Creates a randomly generated background from different backgrouns using DnD 5e basic rule, a bit more fun but backgrounds might be full of contradictions
 
 **!roll** - rolls a d20
 
@@ -46,5 +46,4 @@ Requires Discord.py library, and SQL software to edit database directly.
 - Add more to background features such as stats and proficiencies
 - More types of stat rolling
 - Create entire random characters with names, stats and backgrounds
-- Add languages to !randomBackground
 - Other stuff I haven't thought of yet
