@@ -4,7 +4,7 @@ import random
 
 class RollStats(Roll):
     def __init__(self, bot):
-        self.bot = bot
+        super().__init__(bot)
         self.minVal = []
         self.statTotals = []
 

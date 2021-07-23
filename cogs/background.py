@@ -6,6 +6,7 @@ import random
 class Background(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.languageList = self.getLanguageList()
 
     def setBackgroundID(self):
         self.openDB()
@@ -52,10 +53,9 @@ class Background(commands.Cog):
         return self.noLanguages
 
     def setLanguages(self):
-        languageList = self.getLanguageList()
         languages = []
         for i in range(int(self.noLanguages)):
-            language = random.choice(languageList)
+            language = random.choice(self.languageList)
             if language not in languages:
                 languages.append(language)
             else:
@@ -96,7 +96,7 @@ class Background(commands.Cog):
 
 class CreateBackground(Background):
     def __init__(self, bot):
-        self.bot = bot
+        super().__init__(bot)
         self.personalityStatement = ""
         self.idealStatement = ""
         self.bondStatement = ""

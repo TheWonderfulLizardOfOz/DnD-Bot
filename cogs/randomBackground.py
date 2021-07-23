@@ -4,7 +4,7 @@ import random
 
 class RandomBackground(Background):
     def __init__(self, bot):
-        self.bot = bot
+        super().__init__(bot)
         self.personalityStatement = """SELECT personalityTrait.personalityTrait 
                         FROM PersonalityTrait"""
         self.idealStatement = """SELECT ideal.ideal FROM ideal"""
