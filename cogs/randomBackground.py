@@ -10,6 +10,7 @@ class RandomBackground(Background):
         self.idealStatement = """SELECT ideal.ideal FROM ideal"""
         self.bondStatement = """SELECT bond.bond FROM bond"""
         self.flawStatement = """SELECT flaw.flaw FROM flaw"""
+        self.name = ""
 
     @commands.command()
     async def randomBackground(self, ctx):
@@ -21,6 +22,7 @@ class RandomBackground(Background):
         self.noLanguages = random.randint(0, 3)
         languages = self.setLanguages()
         self.setLanguageMessage(languages)
+        self.setName()
         message = self.message()
         await ctx.send(message)
 

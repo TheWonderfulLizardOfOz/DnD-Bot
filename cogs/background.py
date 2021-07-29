@@ -77,6 +77,15 @@ class Background(commands.Cog):
         else:
             self.languageMessage = None
 
+    def setName(self):
+        self.name = ""
+        file = open(os.path.dirname(__file__) + "/../names.txt")
+        names = []
+        for name in file:
+            newName = name.strip(",\n")
+            names.append(newName)
+        self.name = random.choice(names)
+
     def openDB(self):
         self.db = sqlite3.connect(os.path.dirname(__file__) + '/../dndDB.db')
         self.cursor = self.db.cursor()
@@ -86,12 +95,13 @@ class Background(commands.Cog):
         self.db.close()
 
     def message(self):
-        message = """**`Background:`** {}
+        message = """**`Name:`** {}
+**`Background:`** {}
 **`Personality Trait:`** {}
 **`Ideal:`** {}
 **`Bond:`** {}
 **`Flaw:`** {}
-**`Languages:`** {}""".format(self.background, self.personality, self.ideal, self.bond, self.flaw, self.languageMessage)
+**`Languages:`** {}""".format(self.name, self.background, self.personality, self.ideal, self.bond, self.flaw, self.languageMessage)
         return message
 
 class CreateBackground(Background):
@@ -101,6 +111,7 @@ class CreateBackground(Background):
         self.idealStatement = ""
         self.bondStatement = ""
         self.flawStatement = ""
+        self.name = ""
 
     @commands.command()
     async def createBackground(self, ctx):
@@ -113,6 +124,7 @@ class CreateBackground(Background):
         self.getLanguagesNo()
         languages = self.setLanguages()
         self.setLanguageMessage(languages)
+        self.setName()
         message = self.message()
         await ctx.send(message)
 
