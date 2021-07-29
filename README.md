@@ -2,7 +2,7 @@
 
 A dnd bot for character creation, currently can only generate a random background.
 
-Requires Discord.py library, and SQL software if you want to edit database directly/sqlite3 library to edit using a program.
+Requires Discord.py library, and an SQL browser if you want to edit database directly/sqlite3 library to edit using a program.
 
 # Extensions:
 
