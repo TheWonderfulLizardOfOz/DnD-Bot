@@ -78,7 +78,7 @@ class Background(commands.Cog):
             self.languageMessage = None
 
     def openDB(self):
-        self.db = sqlite3.connect(os.path.dirname(__file__) + '/../backgrounds.db')
+        self.db = sqlite3.connect(os.path.dirname(__file__) + '/../dndDB.db')
         self.cursor = self.db.cursor()
 
     def closeDB(self):
