@@ -1,6 +1,5 @@
 from cogs.dice import Roll
 from discord.ext import commands
-import random
 
 class RollStats(Roll):
     def __init__(self, bot):
