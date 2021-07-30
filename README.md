@@ -50,4 +50,5 @@ Requires Discord.py library, and an SQL browser if you want to edit database dir
 - Add more to background features such as stats and proficiencies
 - More types of stat rolling
 - Add more to create character command
+- Clean up the code because the inheritance is a mess
 - Other stuff I haven't thought of yet
