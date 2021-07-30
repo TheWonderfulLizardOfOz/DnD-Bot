@@ -86,6 +86,13 @@ class Background(commands.Cog):
             names.append(newName)
         self.name = random.choice(names)
 
+    def setStatements(self):
+        self.personalityStatement = """SELECT personalityTrait.personalityTrait 
+                   FROM PersonalityTrait WHERE personalityTrait.backgroundID = """ + str(self.backgroundID)
+        self.idealStatement = """SELECT ideal.ideal FROM ideal WHERE ideal.backgroundID = """ + str(self.backgroundID)
+        self.bondStatement = """SELECT bond.bond FROM bond WHERE bond.backgroundID = """ + str(self.backgroundID)
+        self.flawStatement = """SELECT flaw.flaw FROM flaw WHERE flaw.backgroundID = """ + str(self.backgroundID)
+
     def openDB(self):
         self.db = sqlite3.connect(os.path.dirname(__file__) + '/../dndDB.db')
         self.cursor = self.db.cursor()
@@ -127,13 +134,6 @@ class CreateBackground(Background):
         self.setName()
         message = self.message()
         await ctx.send(message)
-
-    def setStatements(self):
-        self.personalityStatement = """SELECT personalityTrait.personalityTrait 
-                FROM PersonalityTrait WHERE personalityTrait.backgroundID = """ + str(self.backgroundID)
-        self.idealStatement = """SELECT ideal.ideal FROM ideal WHERE ideal.backgroundID = """ + str(self.backgroundID)
-        self.bondStatement = """SELECT bond.bond FROM bond WHERE bond.backgroundID = """ + str(self.backgroundID)
-        self.flawStatement = """SELECT flaw.flaw FROM flaw WHERE flaw.backgroundID = """ + str(self.backgroundID)
 
 def setup(bot):
     bot.add_cog(CreateBackground(bot))
