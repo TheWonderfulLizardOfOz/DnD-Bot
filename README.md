@@ -16,6 +16,8 @@ Requires Discord.py library, and an SQL browser if you want to edit database dir
 
 **cogs.rollStats** - Extension for rolling stats
 
+**cogs.createCharacter** - Extension for creating a character
+
 # Commands:
 
 **!createBackstory** - Creates a randomly generated background using DnD 5e basic rules backgrounds (so far - will add more when main features are done, only basic rules for now to test features)
@@ -34,6 +36,8 @@ Requires Discord.py library, and an SQL browser if you want to edit database dir
 
 **!rollStats4d6** - rolls stats using a 4d6
 
+**!createCharacter** - Creates a character with stats and backstory (will add more to it later)
+
 **!load [extension_name]** - Loads an extension, can only be executed by server owner
 
 **!unload [extension_name]** - Unloads an extension, can only be executed by server owner (main use is for removing an extention the server may not want)
@@ -45,5 +49,5 @@ Requires Discord.py library, and an SQL browser if you want to edit database dir
 - Members being able to add their own custom backstories and features as well as adding to pre-existing ones
 - Add more to background features such as stats and proficiencies
 - More types of stat rolling
-- Create entire random characters with names, stats and backgrounds
+- Add more to create character command
 - Other stuff I haven't thought of yet
