@@ -1,0 +1,57 @@
+{
+  "Dragonborn":
+  {
+    "strength" : 2,
+    "charisma": 1,
+    "traits": ["Draconic Ancestry", "Breath Weapon", "Damage Resistance"]
+  },
+  "Dwarf":
+  {
+    "constitution": 2,
+    "traits": ["Darkvision", "Dwarven Resiliance", "Dwarven Combat Training", "Stonecunning"]
+  },
+  "Elf":
+  {
+    "dexterity": 2,
+    "traits": ["Darkvision", "Keen Senses", "Fey Ancestry", "Trance"]
+  },
+  "Gnome":
+  {
+    "intelligence": 2,
+    "traits": ["Darkvision", "Gnome Cunning"]
+  },
+  "Half-Elf":
+  {
+    "charisma": 2,
+    "traits": ["Darkvision", "Keen Senses", "Fey Ancestry", "Trance"],
+    "random bonus": [1, 2]
+  },
+  "Halfling":
+  {
+    "dexterity": 2,
+    "traits": ["Lucky", "Brave", "Halfling Nimbleness"]
+  },
+  "Half-Orc":
+  {
+    "strength": 2,
+    "constitution": 1,
+    "traits": ["Darkvision", "Menacing", "Relentless", "Endurance", "Savage Attacks"]
+  },
+  "Human":
+  {
+    "strength": 1,
+    "dexterity": 1,
+    "constitution": 1,
+    "intelligence": 1,
+    "wisdom": 1,
+    "charisma": 1,
+    "language bonus": 1,
+    "traits": ["None"]
+  },
+  "Tiefling":
+  {
+    "charisma": 2,
+    "intelligence": 1,
+    "traits": ["Darkvision", "Hellish Resistance", "Infernal Legacy"]
+  }
+}
