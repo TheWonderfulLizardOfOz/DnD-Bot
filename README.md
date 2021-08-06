@@ -4,6 +4,8 @@ A dnd bot for character creation, currently can only generate a random backgroun
 
 Requires Discord.py library, and an SQL browser if you want to edit database directly/sqlite3 library to edit using a program.
 
+Backgrounds/Races already added are from basic rules
+
 # Extensions:
 
 **cogs.owner** - Extension contains commands that can only be executed by server owner
@@ -36,7 +38,7 @@ Requires Discord.py library, and an SQL browser if you want to edit database dir
 
 **!rollStats4d6** - rolls stats using a 4d6
 
-**!createCharacter** - Creates a character with stats and backstory (will add more to it later)
+**!createCharacter** - Creates a character with stats, backstory, name and race
 
 **!load [extension_name]** - Loads an extension, can only be executed by server owner
 
@@ -46,9 +48,9 @@ Requires Discord.py library, and an SQL browser if you want to edit database dir
 
 # TODO list
 
-- Members being able to add their own custom backstories and features as well as adding to pre-existing ones
-- Add more to background features such as stats and proficiencies
+- Members adding custom races, backstories, names and languages
+- Add proficiencies to create background proficiencies
 - More types of stat rolling
-- Add more to create character command
 - Clean up the code because the inheritance is a mess
+- Add more backgrounds and races that aren't from basic rules
 - Other stuff I haven't thought of yet
