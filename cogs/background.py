@@ -94,7 +94,7 @@ class Background(commands.Cog):
         self.flawStatement = """SELECT flaw.flaw FROM flaw WHERE flaw.backgroundID = """ + str(self.backgroundID)
 
     def openDB(self):
-        self.db = sqlite3.connect(os.path.dirname(__file__) + '/../dndDB.db')
+        self.db = sqlite3.connect(os.path.dirname(__file__) + "/../dndDB.db")
         self.cursor = self.db.cursor()
 
     def closeDB(self):
