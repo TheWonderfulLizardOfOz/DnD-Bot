@@ -135,5 +135,10 @@ class CreateBackground(Background):
         message = self.message()
         await ctx.send(message)
 
+    @commands.command()
+    async def name(self, ctx):
+        self.setName()
+        await ctx.send(self.name)
+
 def setup(bot):
     bot.add_cog(CreateBackground(bot))

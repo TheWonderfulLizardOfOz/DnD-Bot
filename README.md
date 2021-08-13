@@ -40,6 +40,8 @@ Backgrounds/Races already added are from basic rules
 
 **!createCharacter** - Creates a character with stats, backstory, name and race
 
+**!name** - Outputs a randomly selected name from a textfile
+
 **!load [extension_name]** - Loads an extension, can only be executed by server owner
 
 **!unload [extension_name]** - Unloads an extension, can only be executed by server owner (main use is for removing an extention the server may not want)
