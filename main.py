@@ -7,7 +7,7 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 bot = commands.Bot(command_prefix='!')
 
 extentions = ["cogs.background", "cogs.owner", "cogs.randomBackground", "cogs.dice", "cogs.rollStats",
-              "cogs.createCharacter"]
+              "cogs.createCharacter", "cogs.addItem"]
 
 @bot.event
 async def on_ready():
