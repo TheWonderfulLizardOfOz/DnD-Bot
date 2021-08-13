@@ -20,6 +20,8 @@ Backgrounds/Races already added are from basic rules
 
 **cogs.createCharacter** - Extension for creating a character
 
+**cogs.addItem** - Extension for adding custom items to names/races/backgrounds etc...
+
 # Commands:
 
 **!createBackstory** - Creates a randomly generated background using DnD 5e basic rules backgrounds (so far - will add more when main features are done, only basic rules for now to test features)
@@ -41,6 +43,8 @@ Backgrounds/Races already added are from basic rules
 **!createCharacter** - Creates a character with stats, backstory, name and race
 
 **!name** - Outputs a randomly selected name from a textfile
+
+**!addName** - Add name to textfile
 
 **!load [extension_name]** - Loads an extension, can only be executed by server owner
 
