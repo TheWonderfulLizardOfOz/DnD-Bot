@@ -26,20 +26,6 @@ class RollStats(Roll):
         message = self.messageCreator(self.statTotals)
         await ctx.send(message)
 
-    def roll4d6(self):
-        self.statTotals = []
-        self.minVal = []
-        for i in range(6):
-            nums = self.rollDice(4, 6)
-            self.minVal.append(min(nums))
-            self.statTotals.append(sum(nums))
-
-    def dropLowest(self):
-        print(self.minVal)
-        print(self.statTotals)
-        for i in range(len(self.minVal)):
-            self.statTotals[i] = self.statTotals[i] - self.minVal[i]
-
     def messageCreator(self, nums):
         message = ""
         stats = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]

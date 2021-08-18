@@ -36,6 +36,20 @@ class Roll(commands.Cog):
             message += "\n = " + str(total)
         return message
 
+    def roll4d6(self):
+        self.statTotals = []
+        self.minVal = []
+        for i in range(6):
+            nums = self.rollDice(4, 6)
+            self.minVal.append(min(nums))
+            self.statTotals.append(sum(nums))
+
+    def dropLowest(self):
+        print(self.minVal)
+        print(self.statTotals)
+        for i in range(len(self.minVal)):
+            self.statTotals[i] = self.statTotals[i] - self.minVal[i]
+
 class RollDice(Roll):
     def __init__(self, bot):
         super().__init__(bot)
