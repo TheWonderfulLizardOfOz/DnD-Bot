@@ -22,7 +22,8 @@ class CreateCharacter(Background, Roll):
         self.setBond()
         self.setFlaw()
         self.getLanguagesNo()
-        self.nums = self.rollDice(6, 20)
+        self.roll4d6()
+        self.dropLowest()
         self.setRace()
         languages = self.setLanguages()
         self.setLanguageMessage(languages)
@@ -40,7 +41,7 @@ class CreateCharacter(Background, Roll):
         raceAttributes = self.raceDict[self.race]
         self.addRandBonus(raceAttributes)
         for i in range(len(self.stats)):
-            self.nums[i] += raceAttributes.get(self.stats[i], 0)
+            self.statTotals[i] += raceAttributes.get(self.stats[i], 0)
         self.noLanguages += raceAttributes.get("languages bonus", 0)
         self.setRacialTraits(raceAttributes)
 
@@ -51,7 +52,7 @@ class CreateCharacter(Background, Roll):
                 statToAdd = random.choice(self.stats)
                 if raceAttributes.get(statToAdd, 0) == 0:
                     statIndex = self.stats.index(statToAdd)
-                    self.nums[statIndex] += randBonus[1]
+                    self.statTotals[statIndex] += randBonus[1]
 
     def setRacialTraits(self, raceAttributes):
         self.racialTraits = []
@@ -61,7 +62,7 @@ class CreateCharacter(Background, Roll):
     def messageCreator(self):
         message = ""
         for i in range(len(self.stats)):
-            message += "**`" + self.stats[i].title() + ":`** " + str(self.nums[i]) +"\n"
+            message += "**`" + self.stats[i].title() + ":`** " + str(self.statTotals[i]) +"\n"
         return message
 
     def createRaceMessage(self):
