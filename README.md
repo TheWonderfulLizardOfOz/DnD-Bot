@@ -24,9 +24,9 @@ Backgrounds/Races already added are from basic rules
 
 # Commands:
 
-**!createBackstory** - Creates a randomly generated background using DnD 5e basic rules backgrounds (so far - will add more when main features are done, only basic rules for now to test features)
+**!createBackground** - Creates a randomly generated background using DnD 5e basic rules backgrounds (so far - will add more when main features are done, only basic rules for now to test features)
 
-**!randomBackstory** - Creates a randomly generated background from different backgrouns using DnD 5e basic rule, a bit more fun but backgrounds might be full of contradictions
+**!randomBackground** - Creates a randomly generated background from different backgrouns using DnD 5e basic rule, a bit more fun but backgrounds might be full of contradictions
 
 **!roll** - rolls a d20
 
